@@ -1,0 +1,63 @@
+---
+name: "Update multi-networkpolicy-nftables version" 
+
+sources:
+ multi-networkpolicy-nftables:
+   name: Get multi-networkpolicy-nftables version
+   kind: githubrelease
+   spec:
+     owner: k8snetworkplumbingwg
+     repository: multi-networkpolicy-nftables
+     token: '{{ requiredEnv .github.token }}'
+     typefilter:
+       release: true
+       draft: false
+       prerelease: false
+     versionfilter:
+       kind: semver
+
+targets:
+  dockerfile:
+    name: "Bump to latest multi-networkpolicy-nftables version in Dockerfile"
+    kind: dockerfile
+    scmid: default
+    sourceid: multi-networkpolicy-nftables
+    spec:
+      file: "Dockerfile"
+      instruction:
+        keyword: "ARG"
+        matcher: "TAG"
+
+  makefile:
+    name: "Bump to latest multi-networkpolicy-nftables version in Makefile"
+    kind: file
+    scmid: default
+    disablesourceinput: true
+    spec:
+      file: Makefile
+      matchpattern: '(?m)^TAG \:\= (.*)'
+      replacepattern: 'TAG := {{ source "multi-networkpolicy-nftables" }}$$(BUILD_META)'
+
+scms:
+  default:
+    kind: github
+    spec:
+      token: '{{ requiredEnv .github.token }}'
+      username: '{{ .github.username }}'
+      user: '{{ .github.username }}'
+      email: '{{ .github.email }}'
+      owner: '{{ .github.owner }}'
+      repository: '{{ .github.repository }}'
+      branch: '{{ .github.branch }}'
+      
+actions:
+    default:
+        title: 'Bump multi-networkpolicy-nftables version to {{ source "multi-networkpolicy-nftables" }}'
+        kind: github/pullrequest
+        spec:
+            automerge: false
+            labels:
+                - chore
+                - skip-changelog
+                - status/auto-created 
+        scmid: default

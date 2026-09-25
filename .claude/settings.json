@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//home/azureuser/github/rancher/**)",
+      "Read(//home/azureuser/github/rancher/image-build-flannel/**)",
+      "Bash(make image-build *)",
+      "Bash(docker buildx *)"
+    ]
+  }
+}
