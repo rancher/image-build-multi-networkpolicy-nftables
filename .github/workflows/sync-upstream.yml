@@ -28,7 +28,7 @@ jobs:
           private-key: ${{ env.PRIVATE_KEY }}
 
       - name: Sync Upstream Releases
-        uses: rancher/ecm-distro-tools/actions/sync-upstream-release@016551c414f82e64af8c4c18315ea3093d10be7c # v0.74.3
+        uses: rancher/ecm-distro-tools/actions/sync-upstream-release@fdf1c26ea7f6c61b1cc8496a393788d9e9246b98 # v0.77.3
         with:
           upstream-owner: 'k8snetworkplumbingwg'
           upstream-repo: 'multi-networkpolicy-nftables'
