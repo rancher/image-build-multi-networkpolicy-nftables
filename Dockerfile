@@ -1,6 +1,6 @@
 ARG BCI_IMAGE=registry.suse.com/bci/bci-micro:16.0
 ARG BCI_BASE_IMAGE=registry.suse.com/bci/bci-base:16.0
-ARG GO_IMAGE=rancher/hardened-build-base:v1.26.8b1
+ARG GO_IMAGE=rancher/hardened-build-base:v1.26.9b1
 ARG XX_IMAGE=rancher/mirrored-tonistiigi-xx:1.6.1
 
 FROM --platform=$BUILDPLATFORM ${XX_IMAGE} AS xx
