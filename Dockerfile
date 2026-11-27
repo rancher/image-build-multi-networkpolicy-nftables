@@ -14,7 +14,7 @@ RUN set -x && \
     xx-apk --no-cache add musl-dev gcc
 
 FROM base-builder AS builder
-ARG TAG=v0.1.0
+ARG TAG=v0.2.0
 ARG PKG="github.com/k8snetworkplumbingwg/multi-networkpolicy-nftables"
 ARG SRC="github.com/k8snetworkplumbingwg/multi-networkpolicy-nftables"
 RUN git clone --depth=1 https://${SRC}.git $GOPATH/src/${PKG}

@@ -17,7 +17,7 @@ SRC ?= github.com/k8snetworkplumbingwg/multi-networkpolicy-nftables
 TAG ?= ${GITHUB_ACTION_TAG}
 
 ifeq ($(TAG),)
-TAG := v0.1.0$(BUILD_META)
+TAG := v0.2.0$(BUILD_META)
 endif
 
 ifeq (,$(filter %$(BUILD_META),$(TAG)))
